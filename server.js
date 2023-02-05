@@ -6,15 +6,11 @@ const app = express();
 
 
 
-// declare global array variables
-
 let posts = [];
 
 let categories = [];
 
 
-
-// read data files and initialize the global arrays
 
 blogService.initialize()
 
@@ -36,8 +32,6 @@ blogService.initialize()
 
   
 
-// set up the / route to redirect to /about
-
 app.get('/', function(req, res) {
 
   res.redirect('/about');
@@ -46,8 +40,6 @@ app.get('/', function(req, res) {
 
 
 
-// set up the /about route to return the about.html page
-
 app.get('/about', function(req, res) {
 
   res.sendFile(__dirname + '/views/about.html');
@@ -55,8 +47,6 @@ app.get('/about', function(req, res) {
 });
 
 
-
-// set up the /blog route to return all published blog posts
 
 app.get('/blog', function(req, res) {
 
@@ -78,8 +68,6 @@ app.get('/blog', function(req, res) {
 
 
 
-// set up the /posts route to return all blog posts
-
 app.get('/posts', function(req, res) {
 
   blogService.getAllPosts()
@@ -100,8 +88,6 @@ app.get('/posts', function(req, res) {
 
 
 
-// set up the /categories route to return all categories
-
 app.get('/categories', function(req, res) {
 
   blogService.getCategories()
@@ -121,8 +107,6 @@ app.get('/categories', function(req, res) {
 });
 
 
-
-// set up the 'no matching route' to return a custom message
 
 app.get('*', function(req, res) {
 
